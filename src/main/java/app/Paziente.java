@@ -3,10 +3,10 @@ package app;
 import java.io.Serializable;
 
 public class Paziente implements Serializable {
-    private String nome;
-    private String cognome;
-    private int eta;
-    private String codiceFiscale;
+    private final String nome;
+    private final String cognome;
+    private final int eta;
+    private final String codiceFiscale;
 
     public String getCodiceFiscale() {
         return codiceFiscale;

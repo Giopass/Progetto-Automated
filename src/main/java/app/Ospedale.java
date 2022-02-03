@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 
 /**
  * Classe che si occupa della gestione dei pazienti
+ *
  * @author Giovanni Passaro
  * @version 1.0
  */
@@ -12,11 +13,11 @@ import java.util.stream.Stream;
 public class Ospedale {
     private static final Ospedale INSTANCE = new Ospedale();
 
-    private Ospedale(){
+    private Ospedale() {
     }
 
     /**
-     *pazienti contiene tutti i pazienti noti all'ospedale
+     * pazienti contiene tutti i pazienti noti all'ospedale
      */
     private ArrayList<Paziente> pazienti = new ArrayList<>();
 
@@ -30,12 +31,11 @@ public class Ospedale {
     }
 
     /**
-     *
      * @return true true se il codice fiscale è già stato utlizzato
      */
-    public boolean controllaCodice(String codice){
+    public boolean controllaCodice(String codice) {
         for (Paziente paziente : pazienti) {
-            if(paziente.getCodiceFiscale().equals(codice))
+            if (paziente.getCodiceFiscale().equals(codice))
                 return true;
         }
         return false;
@@ -48,15 +48,15 @@ public class Ospedale {
     /**
      * aggiunge il paziente inserito
      */
-    public void aggiungiPaziente(Paziente paziente){
+    public void aggiungiPaziente(Paziente paziente) {
         pazienti.add(paziente);
     }
 
     /**
      * stampa i pazienti in ordine alfabetico di nome, cognome oppure crescente per età
      */
-    public void stampaPazienti(int ordinamento){
-        if(pazienti.isEmpty())
+    public void stampaPazienti(int ordinamento) {
+        if (pazienti.isEmpty())
             System.out.println("Nessun paziente registrato");
         else {
             switch (ordinamento) {
@@ -84,38 +84,38 @@ public class Ospedale {
     /**
      * ordina l'arraylist in base alla scelta dell'utente
      */
-    public void stampaPerEta(){
-        pazienti.sort((Paziente p1, Paziente p2) -> Integer.compare(p1.getEta(),p2.getEta()));
+    public void stampaPerEta() {
+        pazienti.sort((Paziente p1, Paziente p2) -> Integer.compare(p1.getEta(), p2.getEta()));
     }
 
-    public void stampaPerCognome(){
+    public void stampaPerCognome() {
         pazienti.sort((Paziente p1, Paziente p2) -> p1.getCognome().compareTo(p2.getCognome()));
     }
 
-    public void stampaPerNome(){
+    public void stampaPerNome() {
         pazienti.sort((Paziente p1, Paziente p2) -> p1.getNome().compareTo(p2.getNome()));
     }
 
     /**
      * cerca un paziente richiesto dall'utente, se esiste viene mostrato
+     *
      * @param codice
      */
-    public void trovaPaziente(String codice){
+    public void trovaPaziente(String codice) {
         Paziente paziente = cerca(codice);
-        if(paziente != null)
-            System.out.println(paziente.toString());
+        if (paziente != null)
+            System.out.println(paziente);
         else
             System.out.println("Paziente inesistente");
     }
 
     /**
-     *
      * @param codice
      * @return paziente cercato dall'utente
      */
-    public Paziente cerca(String codice){
+    public Paziente cerca(String codice) {
         for (Paziente paziente : pazienti) {
-            if(paziente.getCodiceFiscale().equals(codice))
+            if (paziente.getCodiceFiscale().equals(codice))
                 return paziente;
         }
         return null;

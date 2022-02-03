@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class UI {
     private static final UI INSTANCE = new UI();
 
-    private UI(){
+    private UI() {
     }
 
     public static UI getINSTANCE() {
@@ -22,14 +22,14 @@ public class UI {
 
         try {
             Ospedale.getINSTANCE().setPazienti(MemoryManager.getInstance().loadData());
-        }catch(IOException | ClassNotFoundException e){
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        do{
+        do {
             this.menu();
             scelta = tastiera.nextInt();
-            switch(scelta){
+            switch (scelta) {
 
                 case 1:
                     Ospedale.getINSTANCE().aggiungiPaziente(this.creaPaziente());
@@ -44,14 +44,14 @@ public class UI {
                     break;
 
                 case 0:
-                    try{
+                    try {
                         MemoryManager.getInstance().salva(Ospedale.getINSTANCE().getPazienti());
-                    }catch(IOException e){
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
                     break;
             }
-        }while(scelta != 0);
+        } while (scelta != 0);
     }
 
     private void menu() {
@@ -61,7 +61,7 @@ public class UI {
         System.out.println("0)Esci");
     }
 
-    private Paziente creaPaziente(){
+    private Paziente creaPaziente() {
         Scanner tastiera = new Scanner(System.in);
         System.out.println("Inserisci il nome");
         String nome = tastiera.nextLine();
@@ -85,7 +85,7 @@ public class UI {
         return paziente;
     }
 
-    private int scegliOrdinamento(){
+    private int scegliOrdinamento() {
         Scanner tastiera = new Scanner(System.in);
         System.out.println("In che ordine vuoi vedere i risultati?");
         System.out.println("1)Ordina per nome");
@@ -96,7 +96,7 @@ public class UI {
         return scelta;
     }
 
-    private String prendiCodiceFiscale(){
+    private String prendiCodiceFiscale() {
         Scanner tastiera = new Scanner(System.in);
         System.out.println("Inserisci il codice fiscale del paziente cercato");
         String codice = tastiera.nextLine();
